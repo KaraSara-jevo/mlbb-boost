@@ -1,4 +1,4 @@
-import { ArrowRight, ArrowUpRight, Clock3, Crown, Gamepad2, Gem, ShieldCheck, Sparkles, Star, Trophy, Zap } from 'lucide-react'
+import { ArrowRight, ArrowUpRight, Clock3, Gamepad2, Gem, ShieldCheck, Sparkles, Star, Trophy, Zap } from 'lucide-react'
 import { Link } from 'react-router-dom'
 
 const heroBackgroundImage = `${import.meta.env.BASE_URL}image.png`
@@ -22,28 +22,108 @@ export function HeroSection() {
 }
 
 function RankProgressCard() {
+  const baseUrl = import.meta.env.BASE_URL;
+
   return (
     <div className="relative mx-auto w-full max-w-[520px] lg:max-w-none">
       <div className="absolute -inset-8 rounded-full bg-cyan-400/[0.08] blur-3xl" />
       <div className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-slate-900/90 p-5 shadow-2xl backdrop-blur-md sm:p-7">
-        <div className="flex items-center justify-between"><span className="text-[10px] font-bold tracking-[0.22em] text-slate-300">RANK PROGRESSION</span><span className="flex items-center gap-1.5 rounded-full border border-emerald-300/15 bg-emerald-300/[0.07] px-2.5 py-1 text-[9px] font-bold uppercase tracking-wider text-emerald-300"><span className="h-1 w-1 rounded-full bg-emerald-300" /> Live</span></div>
-        <div className="mt-8 flex items-center justify-between gap-1 min-[380px]:gap-2 sm:gap-4">
-          <RankBadge label="EPIC" title="Current rank" icon={ShieldCheck} />
-          <div className="mb-5 flex min-w-0 flex-1 flex-col items-center"><span className="mb-2 text-[7px] font-bold tracking-[0.1em] text-amber-300 min-[380px]:text-[8px]">YOUR CLIMB</span><div className="flex w-full items-center"><div className="h-px flex-1 bg-gradient-to-r from-slate-600 to-amber-300/70" /><span className="mx-1 grid h-7 w-7 shrink-0 place-items-center rounded-full border border-amber-300/25 bg-amber-300/10 text-amber-300 min-[380px]:mx-2 min-[380px]:h-8 min-[380px]:w-8"><ArrowRight size={15} /></span><div className="h-px flex-1 bg-gradient-to-r from-amber-300/70 to-amber-300" /></div></div>
-          <RankBadge label="MYTHIC" title="Target rank" icon={Crown} target />
+        {/* Header + MLBB Logo */}
+        <div className="flex items-center justify-between gap-3">
+          <div className="flex items-center gap-2.5">
+            <img
+              src={`${baseUrl}mlbb-logo.png`}
+              alt="Mobile Legends: Bang Bang"
+              className="h-7 w-auto object-contain select-none drop-shadow-[0_0_8px_rgba(251,191,36,0.25)] sm:h-8"
+            />
+            <span className="hidden text-[10px] font-bold tracking-[0.2em] text-slate-300 min-[420px]:inline">
+              RANK PROGRESSION
+            </span>
+          </div>
+          <span className="flex shrink-0 items-center gap-1.5 rounded-full border border-emerald-300/15 bg-emerald-300/[0.07] px-2.5 py-1 text-[9px] font-bold uppercase tracking-wider text-emerald-300">
+            <span className="h-1 w-1 rounded-full bg-emerald-300" /> Live
+          </span>
         </div>
-        <div className="mt-9 rounded-2xl border border-white/[0.07] bg-slate-950/90 p-4 sm:p-5"><div className="flex items-end justify-between gap-2"><div><p className="text-[9px] font-bold uppercase tracking-[0.16em] text-slate-300">The next milestone</p><p className="mt-1.5 text-lg font-extrabold">Mythical Glory <span className="text-xs font-semibold text-slate-400">· 50 stars</span></p></div><span className="shrink-0 text-xs font-bold text-cyan-300">Let’s go <ArrowUpRight size={13} className="ml-1 inline" /></span></div><div className="mt-4 h-1.5 overflow-hidden rounded-full bg-white/[0.1]"><div className="h-full w-[68%] rounded-full bg-gradient-to-r from-cyan-400 to-amber-300 shadow-[0_0_12px_rgba(34,211,238,0.45)]" /></div><div className="mt-2 flex justify-between text-[9px] font-medium text-slate-300"><span>Epic I</span><span>Mythic placement →</span></div></div>
-        <div className="mt-5 flex items-center justify-between px-1"><div className="flex -space-x-2">{['bg-cyan-300', 'bg-amber-300', 'bg-violet-300', 'bg-rose-300'].map((color, i) => <span key={color} className={`grid h-7 w-7 place-items-center rounded-full border-2 border-slate-900 ${color} text-[8px] font-black text-slate-950`}>{['J', 'M', 'K', 'A'][i]}</span>)}</div><span className="text-[9px] text-slate-300">Players climbing right now</span><span className="text-[10px] font-bold text-white">24 <span className="text-slate-400">/ 30</span></span></div>
+
+        {/* Rank Climb */}
+        <div className="mt-7 flex items-center justify-between gap-1 min-[380px]:gap-2 sm:gap-4">
+          <RankBadge label="EPIC" title="Current rank" image={`${baseUrl}Epic-logo.png`} />
+          <div className="mb-5 flex min-w-0 flex-1 flex-col items-center">
+            <span className="mb-2 text-[7px] font-bold tracking-[0.1em] text-amber-300 min-[380px]:text-[8px]">
+              YOUR CLIMB
+            </span>
+            <div className="flex w-full items-center">
+              <div className="h-px flex-1 bg-gradient-to-r from-slate-600 to-amber-300/70" />
+              <span className="mx-1 grid h-7 w-7 shrink-0 place-items-center rounded-full border border-amber-300/25 bg-amber-300/10 text-amber-300 min-[380px]:mx-2 min-[380px]:h-8 min-[380px]:w-8">
+                <ArrowRight size={15} />
+              </span>
+              <div className="h-px flex-1 bg-gradient-to-r from-amber-300/70 to-amber-300" />
+            </div>
+          </div>
+          <RankBadge label="MYTHIC" title="Target rank" image={`${baseUrl}Mythic-logo.png`} target />
+        </div>
+
+        {/* Next Milestone */}
+        <div className="mt-9 rounded-2xl border border-white/[0.07] bg-slate-950/90 p-4 sm:p-5">
+          <div className="flex items-end justify-between gap-2">
+            <div>
+              <p className="text-[9px] font-bold uppercase tracking-[0.16em] text-slate-300">
+                The next milestone
+              </p>
+              <p className="mt-1.5 text-lg font-extrabold">
+                Mythical Glory <span className="text-xs font-semibold text-slate-400">· 50 stars</span>
+              </p>
+            </div>
+            <span className="shrink-0 text-xs font-bold text-cyan-300">
+              Let’s go <ArrowUpRight size={13} className="ml-1 inline" />
+            </span>
+          </div>
+          <div className="mt-4 h-1.5 overflow-hidden rounded-full bg-white/[0.1]">
+            <div className="h-full w-[68%] rounded-full bg-gradient-to-r from-cyan-400 to-amber-300 shadow-[0_0_12px_rgba(34,211,238,0.45)]" />
+          </div>
+          <div className="mt-2 flex justify-between text-[9px] font-medium text-slate-300">
+            <span>Epic I</span>
+            <span>Mythic placement →</span>
+          </div>
+        </div>
+
+        {/* Active Boosters */}
+        <div className="mt-5 flex items-center justify-between px-1">
+          <div className="flex -space-x-2">
+            {['bg-cyan-300', 'bg-amber-300', 'bg-violet-300', 'bg-rose-300'].map((color, i) => (
+              <span
+                key={color}
+                className={`grid h-7 w-7 place-items-center rounded-full border-2 border-slate-900 ${color} text-[8px] font-black text-slate-950`}
+              >
+                {['J', 'M', 'K', 'A'][i]}
+              </span>
+            ))}
+          </div>
+          <span className="text-[9px] text-slate-300">Players climbing right now</span>
+          <span className="text-[10px] font-bold text-white">
+            24 <span className="text-slate-400">/ 30</span>
+          </span>
+        </div>
       </div>
-      <div className="absolute -bottom-4 -left-3 hidden items-center gap-2.5 rounded-xl border border-white/10 bg-slate-900 px-3.5 py-3 shadow-xl sm:flex"><span className="grid h-8 w-8 place-items-center rounded-lg bg-amber-300/10 text-amber-300"><Sparkles size={16} /></span><span><span className="block text-[10px] font-bold">Skilled boosters</span><span className="mt-0.5 block text-[9px] text-slate-300">Ready for your next match</span></span></div>
+
+      {/* Bottom Badge */}
+      <div className="absolute -bottom-4 -left-3 hidden items-center gap-2.5 rounded-xl border border-white/10 bg-slate-900 px-3.5 py-3 shadow-xl sm:flex">
+        <span className="grid h-8 w-8 place-items-center rounded-lg bg-amber-300/10 text-amber-300">
+          <Sparkles size={16} />
+        </span>
+        <span>
+          <span className="block text-[10px] font-bold">Skilled boosters</span>
+          <span className="mt-0.5 block text-[9px] text-slate-300">Ready for your next match</span>
+        </span>
+      </div>
     </div>
-  )
+  );
 }
 
-function RankBadge({ label, title, icon: Icon, target = false }) {
+function RankBadge({ label, title, image, target = false }) {
   const boxStyle = target ? 'border-amber-300/35 bg-gradient-to-br from-amber-300/20 to-orange-500/10 text-amber-300 shadow-[0_0_35px_rgba(251,191,36,0.1)]' : 'border-slate-600 bg-gradient-to-br from-slate-700 to-slate-900 text-slate-200 shadow-lg'
   const labelStyle = target ? 'text-amber-300' : 'text-slate-300'
-  return <div className="min-w-0 text-center"><div className={`relative mx-auto grid h-[68px] w-[68px] place-items-center rounded-2xl border sm:h-24 sm:w-24 ${boxStyle}`}><Icon size={36} /><span className={`absolute -bottom-2 rounded bg-slate-950 px-2 py-0.5 text-[8px] font-black tracking-widest ${labelStyle}`}>{label}</span></div><p className="mt-5 text-[10px] font-semibold text-slate-300">{title}</p></div>
+  return <div className="min-w-0 text-center"><div className={`relative mx-auto grid h-[68px] w-[68px] place-items-center rounded-2xl border sm:h-24 sm:w-24 ${boxStyle}`}><img src={image} alt={`${label} rank emblem`} className="h-14 w-14 select-none object-contain drop-shadow-[0_2px_8px_rgba(0,0,0,0.45)] sm:h-[5.25rem] sm:w-[5.25rem]" /><span className={`absolute -bottom-2 rounded bg-slate-950 px-2 py-0.5 text-[8px] font-black tracking-widest ${labelStyle}`}>{label}</span></div><p className="mt-5 text-[10px] font-semibold text-slate-300">{title}</p></div>
 }
 
 export function TrustBar() {

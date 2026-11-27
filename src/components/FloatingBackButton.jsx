@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
-import { ArrowLeft, Gem, House, Menu, MessageCircle, Plus, Trophy, X } from 'lucide-react'
+import { ArrowLeft, Gem, House, MessageCircle, Plus, Trophy, X } from 'lucide-react'
 
 const BUTTON_SIZE = 56
 const EDGE_GAP = 14
@@ -50,10 +50,6 @@ export default function FloatingBackButton() {
     window.addEventListener('resize', handleResize)
     return () => window.removeEventListener('resize', handleResize)
   }, [])
-
-  useEffect(() => {
-    setMenuOpen(false)
-  }, [location.pathname])
 
   useEffect(() => {
     function handleOutsidePointer(event) {

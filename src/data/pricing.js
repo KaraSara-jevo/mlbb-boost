@@ -1,15 +1,21 @@
-import { Crown, ShieldCheck, Star, Trophy } from 'lucide-react'
-
 export const THB_PER_USD = 34.5
 export const MMK_PER_THB = 100_000 / 750
 export const EXCHANGE_RATES = { THB: 1, USD: 1 / THB_PER_USD, MMK: MMK_PER_THB }
 export const EPIC_TO_MYTHIC_PRICE = 400
 
+export const CURRENT_RANKS = [
+  { id: 'epic', name: 'Epic', tierId: null, currentMin: null, currentMax: null, image: 'Epic-logo.png', fallbackImage: 'Epic.jpg' },
+  { id: 'mythic', name: 'Mythic', tierId: 'star', currentMin: 0, currentMax: 24, image: 'Mythic-logo.png', fallbackImage: 'Rank-Mythic.png' },
+  { id: 'honor', name: 'Mythical Honor', tierId: 'honor', currentMin: 25, currentMax: 49, image: 'Rank-Honor.png', fallbackImage: 'Honor.jpg' },
+  { id: 'glory', name: 'Mythical Glory', tierId: 'glory', currentMin: 50, currentMax: 99, image: 'Rank-Glory.png', fallbackImage: 'Glory.jpg' },
+  { id: 'immortal', name: 'Mythical Immortal', tierId: 'immortal', currentMin: 100, currentMax: Infinity, image: 'Rank-Immortal.png', fallbackImage: 'Immortal.jpg' },
+]
+
 export const PRICING_TIERS = [
-  { id: 'star', name: 'Mythic Star', short: 'STAR', price: 10, color: 'amber', range: '1–24 stars', icon: Star },
-  { id: 'honor', name: 'Honor Star', short: 'HONOR', price: 14, color: 'cyan', range: '25–49 stars', icon: ShieldCheck },
-  { id: 'glory', name: 'Glory Star', short: 'GLORY', price: 15, color: 'violet', range: '50–99 stars', icon: Trophy },
-  { id: 'immortal', name: 'Immortal Star', short: 'IMMORTAL', price: 18, color: 'rose', range: '100+ stars', icon: Crown },
+  { id: 'star', name: 'Mythic Star', short: 'STAR', price: 8, color: 'amber', range: '1–25 stars', min: 1, max: 25, image: 'Rank-Mythic.png' },
+  { id: 'honor', name: 'Honor Star', short: 'HONOR', price: 12, color: 'cyan', range: '25–49 stars', min: 25, max: 49, image: 'Rank-Honor.png' },
+  { id: 'glory', name: 'Glory Star', short: 'GLORY', price: 14, color: 'violet', range: '50–99 stars', min: 50, max: 99, image: 'Rank-Glory.png' },
+  { id: 'immortal', name: 'Immortal Star', short: 'IMMORTAL', price: 18, color: 'rose', range: '100+ stars', min: 100, max: Infinity, image: 'Rank-Immortal.png' },
 ]
 
 export const FAQ_ITEMS = [

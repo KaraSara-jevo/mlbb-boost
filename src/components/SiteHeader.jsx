@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
-import { ArrowUpRight, Menu, MessageCircle, Swords, X } from 'lucide-react'
+import { ArrowUpRight, Menu, MessageCircle, X } from 'lucide-react'
 
 const TELEGRAM_URL = 'https://t.me/zennzenn2003'
 const NAV_ITEMS = [
@@ -42,7 +42,7 @@ export default function SiteHeader() {
       <header className="sticky top-0 z-40 border-b border-white/15 bg-slate-900/65 shadow-[0_8px_32px_rgba(2,6,23,0.18)] backdrop-blur-xl">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
           <Link to="/" className="flex items-center gap-2.5" aria-label="Nexus home" onClick={closeDrawer}>
-            <span className="grid h-9 w-9 place-items-center rounded-xl border border-amber-300/30 bg-amber-300/10 text-amber-300"><Swords size={19} /></span>
+            <span className="h-9 w-9 shrink-0 overflow-hidden rounded-xl border border-amber-300/30 bg-slate-950/40"><img src={`${import.meta.env.BASE_URL}Sanji.jpg`} alt="" aria-hidden="true" className="h-full w-full object-cover" /></span>
             <span><span className="block text-sm font-black tracking-[0.18em]">NEXUS<span className="text-amber-300">.</span></span><span className="hidden text-[9px] font-medium tracking-wide text-slate-300 sm:block">Zenn’s MLBB</span></span>
           </Link>
           <nav className="hidden items-center gap-1 rounded-2xl border border-white/10 bg-slate-950/25 p-1.5 md:flex" aria-label="Main navigation">
@@ -58,7 +58,7 @@ export default function SiteHeader() {
 
       <aside id="mobile-navigation-drawer" aria-label="Mobile navigation" aria-hidden={!menuOpen} inert={!menuOpen} className={`fixed inset-y-0 right-0 z-[80] flex w-[min(88vw,360px)] flex-col border-l border-white/15 bg-slate-900/75 shadow-[-24px_0_80px_rgba(2,6,23,0.55)] backdrop-blur-2xl transition-transform duration-300 ease-out motion-reduce:transition-none md:hidden ${menuOpen ? 'translate-x-0' : 'pointer-events-none translate-x-full'}`}>
         <div className="flex items-center justify-between border-b border-white/10 px-5 pb-5 pt-[max(env(safe-area-inset-top),1.25rem)]">
-          <div className="flex items-center gap-3"><span className="grid h-11 w-11 place-items-center rounded-xl border border-amber-300/30 bg-amber-300/10 text-amber-300"><Swords size={21} /></span><div><p className="text-sm font-black tracking-[0.18em]">NEXUS<span className="text-amber-300">.</span></p><p className="mt-1 text-[10px] font-medium tracking-wide text-slate-300">Zenn’s MLBB</p></div></div>
+          <div className="flex items-center gap-3"><span className="h-11 w-11 shrink-0 overflow-hidden rounded-xl border border-amber-300/30 bg-slate-950/40"><img src={`${import.meta.env.BASE_URL}Sanji.jpg`} alt="" aria-hidden="true" className="h-full w-full object-cover" /></span><div><p className="text-sm font-black tracking-[0.18em]">NEXUS<span className="text-amber-300">.</span></p><p className="mt-1 text-[10px] font-medium tracking-wide text-slate-300">Zenn’s MLBB</p></div></div>
           <button ref={closeButtonRef} type="button" aria-label="Close navigation" onClick={closeDrawer} className="grid h-11 w-11 place-items-center rounded-xl border border-white/10 bg-white/[0.05] text-slate-200 transition hover:border-rose-300/30 hover:bg-rose-300/10 hover:text-white"><X size={20} /></button>
         </div>
 
